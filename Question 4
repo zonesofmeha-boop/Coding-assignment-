@@ -1,0 +1,40 @@
+import javafx.application.Application;
+import javafx.scene.Scene;
+import javafx.scene.control.*;
+import javafx.scene.layout.BorderPane;
+import javafx.stage.Stage;
+
+public class TextEditorMenu extends Application {
+    @Override
+    public void start(Stage stage) {
+        MenuBar menuBar = new MenuBar();
+
+        // File Menu
+        Menu fileMenu = new Menu("File");
+        MenuItem newItem = new MenuItem("New");
+        MenuItem openItem = new MenuItem("Open");
+        MenuItem saveItem = new MenuItem("Save");
+        MenuItem exitItem = new MenuItem("Exit");
+        exitItem.setOnAction(e -> stage.close());
+        fileMenu.getItems().addAll(newItem, openItem, saveItem, exitItem);
+
+        // Edit Menu
+        Menu editMenu = new Menu("Edit");
+
+        // Help Menu
+        Menu helpMenu = new Menu("Help");
+
+        menuBar.getMenus().addAll(fileMenu, editMenu, helpMenu);
+
+        BorderPane root = new BorderPane();
+        root.setTop(menuBar);
+
+        stage.setScene(new Scene(root, 400, 300));
+        stage.setTitle("Text Editor");
+        stage.show();
+    }
+
+    public static void main(String[] args) {
+        launch(args);
+    }
+}
